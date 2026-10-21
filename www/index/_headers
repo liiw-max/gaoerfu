@@ -1,0 +1,40 @@
+# ============================================================================
+#  Cloudflare Pages 响应头
+#  ---------------------------------------------------------------------------
+#  语法：路径一行，缩进两格的 Header: value。路径支持 * 通配符。
+#  这个文件只在 Cloudflare Pages / Workers 上生效，用 nginx 托管时不读它。
+#
+#  注意：CF 面板上如果也开了 HSTS / Always Use HTTPS，以面板为准，
+#        这里再写一遍是为了让配置跟着代码走，换托管平台时不用想起来。
+# ============================================================================
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(self)
+  Cross-Origin-Opener-Policy: same-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests
+
+# HTML 不缓存，改完立即生效（CF 默认对 HTML 也是 max-age=0，这里显式声明）
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/404.html
+  Cache-Control: no-store
+
+# 静态资源长缓存
+/favicon.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+# 想接 Meta / TikTok 像素时，把上面 CSP 的两行换成下面这版，否则事件会被
+# 浏览器静默拦截 —— 表现是「像素不报错，但一个事件都收不到」：
+#
+#   script-src 'self' 'unsafe-inline' https://connect.facebook.net https://analytics.tiktok.com https://www.googletagmanager.com https://js.stripe.com;
+#   connect-src 'self' https://graph.facebook.com https://analytics.tiktok.com https://*.google-analytics.com https://api.stripe.com;
+#   frame-src https://js.stripe.com https://www.facebook.com;
+#   img-src 'self' data: https://www.facebook.com https://analytics.tiktok.com

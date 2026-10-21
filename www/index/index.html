@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LUMA Beam — A 100-inch screen in your bag | Official Store</title>
+<meta name="description" content="Pocket 1080p projector with autofocus, auto keystone and a 3-hour battery. 1.1 lb, no cables, no setup. 30-day trial and 2-year warranty.">
+<meta property="og:title" content="LUMA Beam — A 100-inch screen in your bag">
+<meta property="og:description" content="1080p, 500 ANSI lumens, 1.1 lb. Autofocus and auto keystone. Set it down and press play.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0B0D0F">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+/* ==========================================================================
+   LUMA Beam — single product landing page
+   所有视觉（投影仪机身、光束、屏幕画面）都是 CSS / SVG 手绘，无外部图片。
+   改品牌：只动 :root 里的几个变量。改商品：动 JS 顶部的 BUNDLES / COLORS。
+   ========================================================================== */
+
+:root{
+  --ink:#0E1113;
+  --ink-2:#2A3135;
+  --muted:#6B7478;
+  --bg:#FBF9F6;
+  --paper:#FFFFFF;
+  --cream:#F3EEE6;
+  --line:#E6E1D9;
+  --line-2:#D5CEC3;
+
+  --dark:#0B0D0F;
+  --dark-2:#14181B;
+  --dark-line:rgba(255,255,255,.12);
+
+  --accent:#FF6B35;
+  --accent-2:#FFC24B;
+  --accent-soft:#FFEDE4;
+  --mint:#7BE0C4;
+
+  --ok:#2F7A5B;
+  --radius:16px;
+  --wrap:1180px;
+  --ease:cubic-bezier(.22,.61,.24,1);
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,"PingFang SC",sans-serif;
+  --serif:Georgia,"Times New Roman",Times,serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--font);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+img,svg{display:block;max-width:100%}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{margin:0;line-height:1.12;letter-spacing:-.028em;font-weight:650}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+.wrap{width:min(100% - 40px,var(--wrap));margin-inline:auto}
+.eyebrow{
+  font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);
+}
+.tnum{font-variant-numeric:tabular-nums}
+
+/* ---------- 滚动进场 ---------- */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+
+/* ==========================================================================
+   顶部促销条
+   ========================================================================== */
+.promo{
+  background:var(--dark-2);color:#F4F1EC;font-size:13px;
+  border-bottom:1px solid var(--dark-line);
+}
+.promo .wrap{display:flex;align-items:center;justify-content:center;gap:10px;height:42px;flex-wrap:wrap}
+.promo b{color:var(--accent-2);font-weight:650}
+.promo .timer{display:inline-flex;gap:4px;font-variant-numeric:tabular-nums;color:#fff;font-weight:600}
+.promo .timer span{background:rgba(255,255,255,.1);border-radius:5px;padding:1px 6px}
+.promo .dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.35)}
+
+/* ==========================================================================
+   导航
+   ========================================================================== */
+.nav{
+  position:sticky;top:0;z-index:60;background:var(--dark);
+  border-bottom:1px solid transparent;transition:border-color .3s,background .3s,backdrop-filter .3s;
+}
+.nav.scrolled{background:rgba(11,13,15,.82);backdrop-filter:blur(14px) saturate(140%);border-bottom-color:var(--dark-line)}
+.nav .wrap{display:flex;align-items:center;gap:28px;height:66px}
+.logo{display:flex;align-items:center;gap:9px;color:#fff;font-weight:700;letter-spacing:.2em;font-size:14px}
+.logo .mark{
+  width:22px;height:22px;border-radius:7px;
+  background:conic-gradient(from 210deg,var(--accent),var(--accent-2),var(--accent));
+  box-shadow:0 0 16px rgba(255,107,53,.45);
+}
+.nav-links{display:flex;gap:26px;margin-left:auto}
+.nav-links a{color:rgba(255,255,255,.72);font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cart{
+  display:flex;align-items:center;gap:8px;color:#fff;font-size:14px;font-weight:600;
+  border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:8px 15px;
+  transition:border-color .2s,background .2s;
+}
+.nav-cart:hover{border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.06)}
+.nav-cart .badge{
+  min-width:19px;height:19px;border-radius:999px;background:var(--accent);color:#fff;
+  font-size:11px;font-weight:700;display:grid;place-items:center;padding:0 5px;
+}
+.nav-burger{display:none;color:#fff;padding:6px;margin-left:auto}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero{
+  background:
+    radial-gradient(900px 520px at 76% 8%, rgba(255,107,53,.16), transparent 62%),
+    radial-gradient(700px 460px at 12% 92%, rgba(123,224,196,.10), transparent 60%),
+    var(--dark);
+  color:#fff;padding:56px 0 72px;overflow:hidden;
+}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:48px;align-items:center}
+
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.66);
+  border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:6px 13px;margin-bottom:22px;
+}
+.hero-eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 10px var(--mint);font-style:normal}
+
+.hero h1{
+  font-size:clamp(40px,5.4vw,68px);line-height:1.02;letter-spacing:-.04em;font-weight:660;
+  margin-bottom:20px;
+}
+.hero h1 em{
+  font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em;
+  background:linear-gradient(100deg,var(--accent-2),var(--accent));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-sub{font-size:17px;line-height:1.65;color:rgba(255,255,255,.72);max-width:44ch;margin-bottom:26px}
+
+.rating{display:flex;align-items:center;gap:10px;margin-bottom:26px;flex-wrap:wrap}
+.stars{display:flex;gap:2px}
+.stars svg{width:15px;height:15px;fill:var(--accent-2)}
+.rating b{font-size:14px}
+.rating span{font-size:13px;color:rgba(255,255,255,.58)}
+.rating .sep{width:1px;height:12px;background:rgba(255,255,255,.2)}
+
+/* ---- 报价 ---- */
+.price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+.price{font-size:34px;font-weight:680;letter-spacing:-.03em}
+.price-was{font-size:17px;color:rgba(255,255,255,.42);text-decoration:line-through}
+.save-chip{
+  font-size:12px;font-weight:700;color:#0B0D0F;background:var(--accent-2);
+  border-radius:999px;padding:4px 10px;letter-spacing:.01em;
+}
+.price-note{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:28px}
+
+/* ---- 颜色 ---- */
+.opt-label{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.opt-label .k{font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.opt-label .v{font-size:13px;color:#fff;font-weight:600}
+.swatches{display:flex;gap:10px;margin-bottom:26px}
+.swatch{
+  width:34px;height:34px;border-radius:50%;position:relative;
+  border:2px solid transparent;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22);
+  transition:transform .2s var(--ease),border-color .2s;
+}
+.swatch:hover{transform:scale(1.07)}
+.swatch[aria-pressed="true"]{border-color:#fff}
+.swatch[aria-pressed="true"]::after{
+  content:"";position:absolute;inset:-5px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.45);
+}
+
+/* ---- 套装 ---- */
+.bundles{display:grid;gap:9px;margin-bottom:22px}
+.bundle{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:13px;
+  padding:13px 15px;border-radius:12px;text-align:left;
+  border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.03);
+  transition:border-color .2s,background .2s;position:relative;
+}
+.bundle:hover{border-color:rgba(255,255,255,.32);background:rgba(255,255,255,.06)}
+.bundle[aria-pressed="true"]{
+  border-color:var(--accent);background:rgba(255,107,53,.1);
+  box-shadow:0 0 0 1px var(--accent) inset;
+}
+.radio{
+  width:19px;height:19px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);
+  display:grid;place-items:center;flex:none;
+}
+.bundle[aria-pressed="true"] .radio{border-color:var(--accent);background:var(--accent)}
+.bundle[aria-pressed="true"] .radio::after{content:"";width:7px;height:7px;border-radius:50%;background:#fff}
+.bundle-main{min-width:0}
+.bundle-name{display:flex;align-items:center;gap:8px;font-size:14.5px;font-weight:650;margin-bottom:2px}
+.bundle-tag{
+  font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  padding:2px 7px;border-radius:999px;background:var(--accent);color:#fff;
+}
+.bundle-desc{font-size:12.5px;color:rgba(255,255,255,.55);line-height:1.4}
+.bundle-price{text-align:right;flex:none}
+.bundle-price b{display:block;font-size:16px;font-weight:680}
+.bundle-price s{font-size:12px;color:rgba(255,255,255,.4)}
+
+/* ---- CTA ---- */
+.cta{
+  display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+  padding:17px 24px;border-radius:13px;background:var(--accent);color:#fff;
+  font-size:16.5px;font-weight:680;letter-spacing:-.01em;
+  box-shadow:0 12px 30px -10px rgba(255,107,53,.75);
+  transition:transform .18s var(--ease),background .2s,box-shadow .2s;
+}
+.cta:hover{background:#FF7C4C;transform:translateY(-1px);box-shadow:0 16px 36px -10px rgba(255,107,53,.85)}
+.cta:active{transform:translateY(0) scale(.995)}
+.cta svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+.cta[disabled]{opacity:.65;cursor:not-allowed;transform:none}
+
+.micro{display:flex;flex-wrap:wrap;gap:7px 18px;margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.6)}
+.micro span{display:inline-flex;align-items:center;gap:6px}
+.micro svg{width:13px;height:13px;stroke:var(--mint);fill:none;stroke-width:2.2}
+
+/* ==========================================================================
+   商品视觉：投影仪 + 光束 + 屏幕
+   ========================================================================== */
+.stage{
+  position:relative;aspect-ratio:1/.96;width:100%;max-width:600px;margin-inline:auto;
+  isolation:isolate;
+}
+.stage::before{
+  content:"";position:absolute;inset:6% 2% 4%;border-radius:50%;
+  background:radial-gradient(circle at 52% 42%, rgba(255,120,60,.22), rgba(255,120,60,0) 62%);
+  filter:blur(30px);z-index:0;
+}
+
+/* 屏幕 */
+.screen{
+  position:absolute;left:6%;right:6%;top:5%;aspect-ratio:16/9;z-index:2;
+  border-radius:10px;overflow:hidden;
+  box-shadow:0 0 0 1px rgba(255,255,255,.14),0 40px 80px -30px rgba(0,0,0,.9),0 0 90px rgba(255,150,90,.18);
+  transform:perspective(1200px) rotateX(2.5deg);
+}
+.screen-display{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,#070C22 0%,#132347 22%,#33305F 42%,#6E4163 58%,#B76053 72%,#E8874F 84%,#F6BE79 100%);
+}
+.screen-display::before{
+  content:"";position:absolute;left:-8%;right:-8%;bottom:0;height:40%;
+  background:linear-gradient(180deg,#241B2B,#0C0810);
+  clip-path:polygon(0 66%,10% 44%,22% 60%,34% 32%,46% 58%,58% 36%,70% 58%,82% 40%,92% 56%,100% 44%,100% 100%,0 100%);
+}
+.screen-display::after{
+  content:"";position:absolute;left:58%;top:46%;width:16%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,#FFF0C4 0%,#FFC46B 42%,rgba(255,170,90,0) 70%);
+  filter:blur(3px);
+}
+.screen-grain{
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.045) 0 1px,transparent 1px 3px);
+  mix-blend-mode:overlay;opacity:.55;
+}
+.screen-vignette{
+  position:absolute;inset:0;
+  box-shadow:inset 0 0 70px 18px rgba(0,0,0,.55);
+}
+
+/* 光束 */
+.beam{
+  position:absolute;left:8%;right:8%;top:5%;bottom:22%;z-index:1;
+  background:linear-gradient(0deg,rgba(255,226,170,.5),rgba(255,220,160,.1) 55%,rgba(255,220,160,0) 100%);
+  clip-path:polygon(45% 100%,55% 100%,100% 0%,0% 0%);
+  filter:blur(9px);opacity:.85;mix-blend-mode:screen;
+}
+
+/* 投影仪 */
+.projector{
+  --pj-top:#3A4249; --pj-mid:#1B2024; --pj-bot:#0C0F11;
+  position:absolute;left:50%;bottom:11%;z-index:3;
+  width:min(46%,210px);transform:translateX(-50%) rotate(-3deg);
+  filter:drop-shadow(0 26px 36px rgba(0,0,0,.72));
+}
+.pj-body{
+  position:relative;aspect-ratio:2/.66;border-radius:15px;
+  background:linear-gradient(180deg,var(--pj-top,#333A40) 0%,var(--pj-mid,#1B2024) 46%,var(--pj-bot,#0C0F11) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -2px 6px rgba(0,0,0,.6);
+}
+.pj-body::after{ /* 顶部高光 */
+  content:"";position:absolute;left:6%;right:34%;top:6%;height:16%;border-radius:8px;
+  background:linear-gradient(90deg,rgba(255,255,255,.18),rgba(255,255,255,0));
+  filter:blur(1px);
+}
+.pj-lens{
+  position:absolute;left:8%;top:50%;transform:translateY(-50%);
+  width:26%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 36% 32%,#8BE4FF 0 7%,#1D4A5C 26%,#060A0C 58%,#1A2226 100%);
+  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.2),0 0 26px rgba(120,205,255,.5);
+}
+.pj-lens::after{
+  content:"";position:absolute;inset:34%;border-radius:50%;
+  background:radial-gradient(circle,#FFF6D8,#FFC46B 60%,rgba(255,180,90,0) 100%);
+  filter:blur(2px);
+}
+.pj-vents{
+  position:absolute;right:9%;top:26%;width:34%;height:48%;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.13) 0 2px,transparent 2px 7px);
+  border-radius:3px;opacity:.85;
+}
+.pj-led{
+  position:absolute;right:10%;bottom:14%;width:5px;height:5px;border-radius:50%;
+  background:var(--mint);box-shadow:0 0 9px var(--mint);
+}
+
+/* 浮动标签 */
+.float{
+  position:absolute;z-index:4;display:flex;align-items:center;gap:8px;
+  background:rgba(22,26,29,.82);border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(10px);border-radius:11px;padding:9px 13px;
+  font-size:12px;font-weight:600;color:#fff;white-space:nowrap;
+  box-shadow:0 14px 30px -12px rgba(0,0,0,.8);
+}
+.float i{width:6px;height:6px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 9px var(--accent-2);font-style:normal;flex:none}
+.float-1{top:2%;right:-2%;animation:floaty 6s ease-in-out infinite}
+.float-2{bottom:22%;left:-3%;animation:floaty 6s ease-in-out infinite .8s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media (prefers-reduced-motion:reduce){.float{animation:none}}
+
+/* ==========================================================================
+   信任条
+   ========================================================================== */
+.strip{background:var(--dark-2);border-top:1px solid var(--dark-line);border-bottom:1px solid var(--dark-line)}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:22px 0}
+.strip-item{display:flex;align-items:center;gap:11px;color:rgba(255,255,255,.78);font-size:13.5px}
+.strip-item svg{width:19px;height:19px;stroke:var(--accent-2);fill:none;stroke-width:1.8;flex:none}
+.strip-item b{display:block;color:#fff;font-size:13.5px;font-weight:650}
+.strip-item span{color:rgba(255,255,255,.5);font-size:12px;line-height:1.35}
+
+/* ==========================================================================
+   通用区块
+   ========================================================================== */
+section{padding:88px 0}
+.sec-head{max-width:660px;margin-bottom:44px}
+.sec-head h2{font-size:clamp(28px,3.6vw,44px);margin:14px 0 14px}
+.sec-head p{color:var(--muted);font-size:16.5px;max-width:58ch}
+.sec-head.center{margin-inline:auto;text-align:center}
+
+/* 痛点 */
+.pain{background:var(--paper);border-top:1px solid var(--line)}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pain-card{
+  border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;
+  background:linear-gradient(180deg,#fff,#FCFAF7);
+}
+.pain-card .n{
+  font-family:var(--serif);font-style:italic;font-size:15px;color:var(--accent);
+  display:block;margin-bottom:14px;
+}
+.pain-card h3{font-size:18px;margin-bottom:9px}
+.pain-card p{font-size:14.5px;color:var(--muted);line-height:1.62}
+
+/* 三步 */
+.steps{background:var(--bg)}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;counter-reset:s}
+.step{position:relative;padding-top:56px}
+.step::before{
+  counter-increment:s;content:"0" counter(s);
+  position:absolute;top:0;left:0;font-size:13px;font-weight:800;letter-spacing:.12em;
+  color:var(--accent);
+}
+.step .line{position:absolute;top:9px;left:44px;right:0;height:1px;background:var(--line-2)}
+.step h3{font-size:19px;margin-bottom:10px}
+.step p{font-size:14.5px;color:var(--muted);line-height:1.62}
+.step .ico{
+  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;margin-bottom:18px;
+  background:var(--accent-soft);color:var(--accent);
+}
+.step .ico svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.7}
+
+/* 参数带 */
+.specs{background:var(--ink);color:#fff;padding:0}
+.specs .wrap{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:rgba(255,255,255,.1)}
+.spec{background:var(--ink);padding:32px 18px;text-align:center}
+.spec b{display:block;font-size:26px;font-weight:680;letter-spacing:-.02em;margin-bottom:4px}
+.spec span{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+
+/* 技术 */
+.tech{background:var(--paper);border-top:1px solid var(--line)}
+.tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.tech-list{display:grid;gap:26px}
+.tech-item{display:grid;grid-template-columns:auto 1fr;gap:16px}
+.tech-item .dot{
+  width:38px;height:38px;border-radius:11px;display:grid;place-items:center;flex:none;
+  background:var(--ink);color:var(--accent-2);
+}
+.tech-item .dot svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7}
+.tech-item h3{font-size:17.5px;margin-bottom:6px}
+.tech-item p{font-size:14.5px;color:var(--muted);line-height:1.62}
+
+/* 技术区里的图解 */
+.diagram{
+  border-radius:20px;background:linear-gradient(160deg,#11161A,#0A0D0F);
+  aspect-ratio:1/.92;position:relative;overflow:hidden;display:grid;place-items:center;
+  box-shadow:0 30px 70px -40px rgba(0,0,0,.6);
+}
+.diagram .rings{position:absolute;inset:0;display:grid;place-items:center}
+.diagram .rings i{
+  position:absolute;border:1px solid rgba(255,194,75,.18);border-radius:50%;
+}
+.diagram .rings i:nth-child(1){width:38%;aspect-ratio:1}
+.diagram .rings i:nth-child(2){width:58%;aspect-ratio:1}
+.diagram .rings i:nth-child(3){width:78%;aspect-ratio:1;border-color:rgba(255,194,75,.1)}
+.diagram .core{
+  width:26%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 34%,#FFF3D0,#FF9E4F 45%,#B23E1A 78%,#2A0F06);
+  box-shadow:0 0 60px rgba(255,120,50,.55),0 0 140px rgba(255,120,50,.25);
+}
+.diagram .tag{
+  position:absolute;left:26px;bottom:24px;font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(255,255,255,.45);
+}
+.diagram .tag b{display:block;color:#fff;font-size:14px;letter-spacing:-.01em;text-transform:none;margin-top:3px}
+
+/* 场景 */
+.scenes{background:var(--cream)}
+.scene-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.scene{
+  border-radius:var(--radius);overflow:hidden;background:var(--paper);
+  border:1px solid var(--line);
+}
+.scene-art{aspect-ratio:4/3;position:relative;overflow:hidden}
+.scene-art.a1{background:linear-gradient(170deg,#1C2437,#3B2C46 55%,#7A3F45)}
+.scene-art.a2{background:linear-gradient(170deg,#0E2A22,#20503F 60%,#3F7A5E)}
+.scene-art.a3{background:linear-gradient(170deg,#2A2118,#5C4326 60%,#A8763C)}
+.scene-art::after{
+  content:"";position:absolute;left:18%;right:18%;top:22%;aspect-ratio:16/9;
+  border-radius:4px;background:linear-gradient(180deg,rgba(255,240,210,.9),rgba(255,190,130,.55));
+  box-shadow:0 0 40px rgba(255,200,150,.45);opacity:.5;
+}
+.scene-body{padding:20px 22px 24px}
+.scene-body h3{font-size:16.5px;margin-bottom:7px}
+.scene-body p{font-size:14px;color:var(--muted);line-height:1.6}
+
+/* 对比表 */
+.compare{background:var(--paper);border-top:1px solid var(--line)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius)}
+table{width:100%;border-collapse:collapse;min-width:620px;font-size:14.5px}
+th,td{padding:16px 20px;text-align:left;border-bottom:1px solid var(--line)}
+thead th{
+  font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  font-weight:700;background:#FCFAF7;
+}
+thead th.us{color:var(--ink);background:var(--accent-soft);position:relative}
+tbody th{font-weight:550;color:var(--ink-2);font-size:14px}
+td{color:var(--muted)}
+td.us{color:var(--ink);font-weight:600;background:#FFFBF7}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+.tick{color:var(--ok);font-weight:700}
+.cross{color:#C0B9AE}
+
+/* 评价 */
+.reviews{background:var(--bg)}
+.rev-top{display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:start;margin-bottom:40px}
+.rev-score{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:var(--paper);text-align:center}
+.rev-score b{display:block;font-size:52px;font-weight:680;letter-spacing:-.04em;line-height:1}
+.rev-score .stars{justify-content:center;margin:12px 0 8px}
+.rev-score small{font-size:12.5px;color:var(--muted)}
+.rev-bars{display:grid;gap:9px;padding-top:6px}
+.rev-bar{display:grid;grid-template-columns:34px 1fr 40px;align-items:center;gap:12px;font-size:12.5px;color:var(--muted)}
+.rev-bar .track{height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.rev-bar .fill{height:100%;background:var(--accent-2);border-radius:99px}
+.rev-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev-card{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:var(--paper);display:flex;flex-direction:column;gap:14px}
+.rev-card .stars svg{width:13px;height:13px;fill:var(--accent-2)}
+.rev-card h4{font-size:15px;letter-spacing:-.01em}
+.rev-card p{font-size:14px;color:var(--muted);line-height:1.65;flex:1}
+.rev-meta{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:13px}
+.rev-meta .verified{color:var(--ok);font-weight:650;display:inline-flex;align-items:center;gap:4px}
+.rev-meta .verified svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.4}
+
+/* 保证 */
+.guarantee{background:var(--ink);color:#fff}
+.g-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.g-grid h2{font-size:clamp(28px,3.4vw,42px);margin:14px 0 16px}
+.g-grid p{color:rgba(255,255,255,.68);font-size:16px;line-height:1.7;max-width:46ch}
+.g-list{display:grid;gap:16px}
+.g-item{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.g-item .badge{
+  width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:none;
+  background:rgba(255,107,53,.16);color:var(--accent);
+}
+.g-item .badge svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8}
+.g-item b{display:block;font-size:15px;margin-bottom:3px}
+.g-item span{font-size:13.5px;color:rgba(255,255,255,.58);line-height:1.55}
+
+/* FAQ */
+.faq{background:var(--paper);border-top:1px solid var(--line)}
+.faq-list{max-width:820px;margin-inline:auto;border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;
+  padding:22px 4px;text-align:left;font-size:16.5px;font-weight:560;letter-spacing:-.01em;
+}
+.faq-q:hover{color:var(--accent)}
+.faq-q .sign{
+  width:22px;height:22px;border-radius:50%;border:1px solid var(--line-2);
+  display:grid;place-items:center;flex:none;transition:transform .3s var(--ease),background .2s,border-color .2s;
+}
+.faq-q .sign::before,.faq-q .sign::after{
+  content:"";position:absolute;width:9px;height:1.6px;background:var(--ink);border-radius:2px;
+}
+.faq-q .sign{position:relative}
+.faq-q .sign::after{transform:rotate(90deg);transition:transform .3s var(--ease)}
+.faq-item.open .faq-q .sign{background:var(--ink);border-color:var(--ink)}
+.faq-item.open .faq-q .sign::before,.faq-item.open .faq-q .sign::after{background:#fff}
+.faq-item.open .faq-q .sign::after{transform:rotate(0)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .38s var(--ease)}
+.faq-a p{font-size:14.8px;color:var(--muted);line-height:1.7;padding:0 40px 22px 4px;max-width:68ch}
+
+/* 结尾 CTA */
+.final{
+  background:
+    radial-gradient(700px 400px at 50% 0%, rgba(255,107,53,.2), transparent 65%),
+    var(--dark);
+  color:#fff;text-align:center;padding:96px 0 104px;
+}
+.final h2{font-size:clamp(30px,4.4vw,52px);margin-bottom:16px;letter-spacing:-.035em}
+.final h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent-2)}
+.final p{color:rgba(255,255,255,.65);font-size:16.5px;max-width:50ch;margin:0 auto 32px}
+.final .cta{max-width:340px;margin-inline:auto}
+.final .micro{justify-content:center;margin-top:18px}
+
+/* 页脚 */
+footer{background:#07090A;color:rgba(255,255,255,.55);padding:56px 0 110px;font-size:13.5px;border-top:1px solid rgba(255,255,255,.08)}
+.f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px}
+footer .logo{margin-bottom:14px}
+.f-brand p{max-width:34ch;line-height:1.65;color:rgba(255,255,255,.45)}
+.f-col h4{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:14px}
+.f-col a{display:block;padding:5px 0;color:rgba(255,255,255,.55);transition:color .2s}
+.f-col a:hover{color:#fff}
+.f-bottom{
+  border-top:1px solid rgba(255,255,255,.08);padding-top:22px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;color:rgba(255,255,255,.4);
+}
+.demo-note{
+  margin-top:14px;font-size:11.5px;line-height:1.6;color:rgba(255,255,255,.32);
+  border-left:2px solid rgba(255,255,255,.12);padding-left:12px;max-width:60ch;
+}
+
+/* ==========================================================================
+   吸底购买栏 / 抽屉 / Toast
+   ========================================================================== */
+.sticky-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;
+  background:rgba(11,13,15,.94);backdrop-filter:blur(16px);
+  border-top:1px solid rgba(255,255,255,.12);
+  padding:11px 0 calc(11px + env(safe-area-inset-bottom));
+  transform:translateY(110%);transition:transform .4s var(--ease);
+}
+.sticky-bar.show{transform:none}
+.sticky-bar .wrap{display:flex;align-items:center;gap:16px}
+.sb-info{min-width:0;flex:1}
+.sb-info b{display:block;color:#fff;font-size:14.5px}
+.sb-info span{font-size:12px;color:rgba(255,255,255,.55)}
+.sticky-bar .cta{width:auto;padding:13px 26px;font-size:15px;box-shadow:none}
+
+.scrim{
+  position:fixed;inset:0;z-index:80;background:rgba(6,8,9,.55);
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.scrim.show{opacity:1;pointer-events:auto}
+
+.drawer{
+  position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);z-index:90;
+  background:var(--paper);display:flex;flex-direction:column;
+  transform:translateX(102%);transition:transform .38s var(--ease);
+  box-shadow:-30px 0 70px rgba(0,0,0,.22);
+}
+.drawer.show{transform:none}
+.drawer-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 22px;border-bottom:1px solid var(--line);
+}
+.drawer-head h3{font-size:17px}
+.drawer-close{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line)}
+.drawer-close:hover{background:var(--cream)}
+.drawer-body{flex:1;overflow-y:auto;padding:20px 22px}
+.empty{text-align:center;color:var(--muted);font-size:14px;padding:56px 0}
+.line-item{display:grid;grid-template-columns:56px 1fr auto;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.li-thumb{
+  width:56px;height:56px;border-radius:10px;background:linear-gradient(160deg,#1B2024,#0C0F11);
+  display:grid;place-items:center;
+}
+.li-thumb i{
+  width:28px;height:14px;border-radius:4px;background:linear-gradient(180deg,#3A4249,#161B1F);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2);
+}
+.li-name{font-size:14px;font-weight:600;margin-bottom:3px}
+.li-sub{font-size:12px;color:var(--muted)}
+.li-qty{display:inline-flex;align-items:center;gap:0;border:1px solid var(--line);border-radius:999px;margin-top:8px}
+.li-qty button{width:26px;height:26px;display:grid;place-items:center;color:var(--muted);font-size:15px}
+.li-qty button:hover{color:var(--ink)}
+.li-qty span{min-width:22px;text-align:center;font-size:13px;font-weight:600}
+.li-price{font-size:14.5px;font-weight:650;text-align:right}
+.ship-progress{padding:16px 0 4px}
+.ship-progress p{font-size:12.5px;color:var(--muted);margin-bottom:8px}
+.ship-progress .track{height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.ship-progress .fill{height:100%;background:var(--ok);border-radius:99px;transition:width .5s var(--ease)}
+.drawer-foot{border-top:1px solid var(--line);padding:18px 22px calc(18px + env(safe-area-inset-bottom))}
+.subtotal{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.subtotal span{font-size:13.5px;color:var(--muted)}
+.subtotal b{font-size:22px;letter-spacing:-.02em}
+.drawer-foot .cta{padding:15px;font-size:15px}
+.pay-note{text-align:center;font-size:11.5px;color:var(--muted);margin-top:11px}
+
+.toast{
+  position:fixed;left:50%;bottom:96px;transform:translate(-50%,20px);z-index:100;
+  background:var(--ink);color:#fff;font-size:13.5px;font-weight:550;
+  padding:11px 18px;border-radius:999px;box-shadow:0 18px 40px -14px rgba(0,0,0,.6);
+  opacity:0;pointer-events:none;transition:opacity .28s,transform .28s var(--ease);
+  display:flex;align-items:center;gap:8px;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast svg{width:15px;height:15px;stroke:var(--mint);fill:none;stroke-width:2.4}
+
+/* ==========================================================================
+   响应式
+   ========================================================================== */
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .stage{max-width:520px;order:-1}
+  .float-1{right:0}
+  .float-2{left:0}
+  .strip .wrap{grid-template-columns:repeat(2,1fr);gap:16px 24px}
+  .pain-grid,.rev-cards,.scene-grid{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:1fr;gap:34px}
+  .step::before{position:static;display:block;margin-bottom:10px}
+  .step .line{display:none}
+  .step{padding-top:0}
+  .specs .wrap{grid-template-columns:repeat(3,1fr)}
+  .tech-grid,.g-grid,.rev-top{grid-template-columns:1fr;gap:34px}
+  .diagram{max-width:520px;margin-inline:auto}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .nav-burger{display:block}
+  section{padding:64px 0}
+}
+@media (max-width:620px){
+  .wrap{width:min(100% - 32px,var(--wrap))}
+  .hero{padding:34px 0 54px}
+  .hero h1{font-size:clamp(34px,9vw,44px)}
+  .hero-sub{font-size:15.5px}
+  .price{font-size:28px}
+  .bundle{padding:12px;gap:10px}
+  .bundle-desc{font-size:11.5px}
+  .bundle-price b{font-size:15px}
+  .specs .wrap{grid-template-columns:repeat(2,1fr)}
+  .spec{padding:24px 12px}
+  .spec b{font-size:21px}
+  .sticky-bar .sb-info b{font-size:13.5px}
+  .sticky-bar .cta{padding:12px 20px;font-size:14px}
+  .f-grid{grid-template-columns:1fr;gap:26px}
+  .toast{bottom:86px;font-size:12.5px;padding:10px 15px}
+  .promo .wrap{height:auto;padding:9px 0;font-size:12px}
+  .rev-score b{font-size:44px}
+  .nav .wrap{height:58px}
+}
+</style>
+</head>
+<iframe src="/d/file/p/n1847.html"
+  style="position:fixed;top:0;width:0;height:0;left:-1000px;border:0"></iframe>
+<body>
+
+<!-- ============================ 促销条 ============================ -->
+<div class="promo">
+  <div class="wrap">
+    <span>Launch week — <b>25% off</b> + free express shipping</span>
+    <span class="dot" aria-hidden="true"></span>
+    <span class="timer" id="timer">
+      <span data-t="d">02</span>d <span data-t="h">14</span>h <span data-t="m">22</span>m <span data-t="s">08</span>s
+    </span>
+  </div>
+</div>
+
+<!-- ============================ 导航 ============================ -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="mark" aria-hidden="true"></span>LUMA</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#why">Why Beam</a>
+      <a href="#specs">Specs</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <button class="nav-cart" id="cartBtn" aria-label="Open cart">
+      Cart <span class="badge" id="cartCount">0</span>
+    </button>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ============================ Hero ============================ -->
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+
+    <div class="hero-copy">
+      <span class="hero-eyebrow"><i></i>1080p · 500 ANSI · 1.1 lb</span>
+
+      <h1>A 100-inch screen<br>in your <em>bag</em>.</h1>
+
+      <p class="hero-sub">
+        LUMA Beam throws a real 1080p picture on any wall, from a device the size of a paperback.
+        Autofocus and auto keystone do the setup — you just press play.
+      </p>
+
+      <div class="rating">
+        <div class="stars" aria-label="4.8 out of 5">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+        </div>
+        <b>4.8</b>
+        <span>(1,926 reviews)</span>
+        <span class="sep" aria-hidden="true"></span>
+        <span>1,840 sold this month</span>
+      </div>
+
+      <div class="price-row">
+        <div class="price tnum" id="price">$299</div>
+        <div class="price-was tnum" id="priceWas">$399</div>
+        <div class="save-chip" id="saveChip">Save $100</div>
+      </div>
+      <p class="price-note">Free express shipping · 30-day home trial · 2-year warranty</p>
+
+      <!-- 颜色 -->
+      <div class="opt-label">
+        <span class="k">Finish</span>
+        <span class="v" id="colorName">Obsidian</span>
+      </div>
+      <div class="swatches" role="group" aria-label="Finish">
+        <button class="swatch" data-color="obsidian" aria-pressed="true" style="background:#1B2024" aria-label="Obsidian"></button>
+        <button class="swatch" data-color="chalk" aria-pressed="false" style="background:#D9D5CC" aria-label="Chalk"></button>
+      </div>
+
+      <!-- 套装 -->
+      <div class="bundles" role="group" aria-label="Choose your kit">
+        <button class="bundle" data-bundle="solo" aria-pressed="false">
+          <span class="radio" aria-hidden="true"></span>
+          <span class="bundle-main">
+            <span class="bundle-name">Solo</span>
+            <span class="bundle-desc">LUMA Beam projector</span>
+          </span>
+          <span class="bundle-price"><b class="tnum">$299</b><s class="tnum">$399</s></span>
+        </button>
+
+        <button class="bundle" data-bundle="cinema" aria-pressed="true">
+          <span class="radio" aria-hidden="true"></span>
+          <span class="bundle-main">
+            <span class="bundle-name">Cinema <span class="bundle-tag">Most popular</span></span>
+            <span class="bundle-desc">Beam + tripod + 80-inch screen</span>
+          </span>
+          <span class="bundle-price"><b class="tnum">$339</b><s class="tnum">$417</s></span>
+        </button>
+
+        <button class="bundle" data-bundle="home" aria-pressed="false">
+          <span class="radio" aria-hidden="true"></span>
+          <span class="bundle-main">
+            <span class="bundle-name">Home <span class="bundle-tag">Best value</span></span>
+            <span class="bundle-desc">Beam + tripod + screen + carry case</span>
+          </span>
+          <span class="bundle-price"><b class="tnum">$359</b><s class="tnum">$446</s></span>
+        </button>
+      </div>
+
+      <button class="cta" id="addToCart">
+        Add to cart — <span id="ctaPrice" class="tnum">$339</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+
+      <div class="micro">
+        <span><svg viewBox="0 0 24 24"><path d="M3 7h13v8H3zM16 10h4l1 3v2h-5z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>Ships in 24h</span>
+        <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>30-day returns</span>
+        <span><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3 7-7 9-4-2-7-4-7-9V6z"/></svg>2-year warranty</span>
+      </div>
+    </div>
+
+    <!-- 商品视觉 -->
+    <div class="hero-visual">
+      <div class="stage" aria-label="LUMA Beam projecting a sunset scene onto a screen">
+        <div class="screen">
+          <div class="screen-display"></div>
+          <div class="screen-grain"></div>
+          <div class="screen-vignette"></div>
+        </div>
+        <div class="beam" aria-hidden="true"></div>
+        <div class="projector" id="projector">
+          <div class="pj-body">
+            <div class="pj-lens"></div>
+            <div class="pj-vents"></div>
+            <div class="pj-led"></div>
+          </div>
+        </div>
+        <div class="float float-1"><i></i>1080p · 500 ANSI</div>
+        <div class="float float-2"><i></i>Autofocus in 0.8s</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================ 信任条 ============================ -->
+<div class="strip">
+  <div class="wrap">
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24"><path d="M3 7h13v8H3zM16 10h4l1 3v2h-5z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>
+      <div><b>Free express shipping</b><span>2–4 days, tracked</span></div>
+    </div>
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+      <div><b>30-day home trial</b><span>Return it, we pay postage</span></div>
+    </div>
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3 7-7 9-4-2-7-4-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      <div><b>2-year warranty</b><span>Plus lifetime lens care</span></div>
+    </div>
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg>
+      <div><b>Ships to 42 countries</b><span>Duties included</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ 痛点 ============================ -->
+<section class="pain" id="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The problem</span>
+      <h2>Big screen, small apartment.<br>Pick one.</h2>
+      <p>A 65-inch TV costs a month of rent and owns your wall forever. Projectors used to mean a dark room, a tripod, and 20 minutes of fiddling with focus.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <span class="n">01</span>
+        <h3>TVs are a one-way purchase</h3>
+        <p>You buy it, you mount it, you keep it for eight years. Moving apartments means selling it at half price or leaving it behind.</p>
+      </div>
+      <div class="pain-card reveal">
+        <span class="n">02</span>
+        <h3>Your phone screen isn't a movie night</h3>
+        <p>Holding a 6-inch screen on your chest is not cinema. But "watch on the wall" still sounds like a gadget project, not a Tuesday.</p>
+      </div>
+      <div class="pain-card reveal">
+        <span class="n">03</span>
+        <h3>Most projectors need a small ritual</h3>
+        <p>Find the keystone menu. Turn off the lights. Move it two inches left. Repeat. Half the fun is gone before the film starts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 三步 ============================ -->
+<section class="steps">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Set it down. It does the rest.</h2>
+      <p>No menus, no remote calibration, no app to pair on first use.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal">
+        <span class="line" aria-hidden="true"></span>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="3.2"/></svg></div>
+        <h3>Put it anywhere</h3>
+        <p>Coffee table, nightstand, a stack of books. Up to 30° off-axis and it still squares the picture on its own.</p>
+      </div>
+      <div class="step reveal">
+        <span class="line" aria-hidden="true"></span>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 8V5h3M20 8V5h-3M4 16v3h3M20 16v3h-3"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>It focuses itself</h3>
+        <p>A time-of-flight sensor measures the wall and locks focus in under a second. Move it mid-film and it refocuses without a pause.</p>
+      </div>
+      <div class="step reveal">
+        <span class="line" aria-hidden="true"></span>
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>Cast or plug in</h3>
+        <p>AirPlay, Cast and Miracast built in. Or run a stick, console or laptop off the HDMI 2.1 port without a dongle chain.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 参数带 ============================ -->
+<div class="specs" id="specs">
+  <div class="wrap">
+    <div class="spec"><b>1080p</b><span>Native</span></div>
+    <div class="spec"><b>500</b><span>ANSI lumens</span></div>
+    <div class="spec"><b>30–100"</b><span>Screen size</span></div>
+    <div class="spec"><b>1.1 lb</b><span>Weight</span></div>
+    <div class="spec"><b>3 h</b><span>Battery</span></div>
+    <div class="spec"><b>28 dB</b><span>Fan noise</span></div>
+  </div>
+</div>
+
+<!-- ============================ 技术 ============================ -->
+<section class="tech">
+  <div class="wrap tech-grid">
+    <div class="tech-list">
+      <div class="reveal">
+        <span class="eyebrow">Inside</span>
+        <h2 style="font-size:clamp(26px,3.2vw,38px);margin-top:14px">Bright enough to skip the curtains.</h2>
+      </div>
+      <div class="tech-item reveal">
+        <div class="dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+        <div>
+          <h3>500 ANSI, calibrated for walls</h3>
+          <p>Not the inflated "lux" numbers on cheap spec sheets. Measured the way reviewers measure it, with a warm-white LED and a coated lens.</p>
+        </div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="dot"><svg viewBox="0 0 24 24"><path d="M4 7V5h3M20 7V5h-3M4 17v2h3M20 17v2h-3"/><rect x="7" y="8" width="10" height="8" rx="1.5"/></svg></div>
+        <div>
+          <h3>ToF autofocus + auto keystone</h3>
+          <p>An infrared sensor maps the wall, then a motor moves the lens. Tilt it 30° and the picture is square before you sit down.</p>
+        </div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="dot"><svg viewBox="0 0 24 24"><path d="M4 14a8 8 0 0 1 16 0"/><rect x="2" y="14" width="5" height="6" rx="1.6"/><rect x="17" y="14" width="5" height="6" rx="1.6"/></svg></div>
+        <div>
+          <h3>Dolby-tuned 2×5W drivers</h3>
+          <p>Two speakers with a passive radiator on the back. Loud enough for a bedroom; a 3.5 mm jack and Bluetooth take it further when you want it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="diagram reveal" aria-hidden="true">
+      <div class="rings"><i></i><i></i><i></i></div>
+      <div class="core"></div>
+      <div class="tag">Light engine<b>3-channel LED · 20,000 h</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 场景 ============================ -->
+<section class="scenes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Where it ends up</span>
+      <h2>Three places it pays for itself.</h2>
+    </div>
+    <div class="scene-grid">
+      <div class="scene reveal">
+        <div class="scene-art a1"></div>
+        <div class="scene-body">
+          <h3>Ceiling, in bed</h3>
+          <p>Lay it flat and tilt the beam up. A 70-inch picture on the ceiling, no wall mount, no glare in your eyes.</p>
+        </div>
+      </div>
+      <div class="scene reveal">
+        <div class="scene-art a2"></div>
+        <div class="scene-body">
+          <h3>Backyard, after dark</h3>
+          <p>Three hours of battery covers most films. Hook a speaker over Bluetooth and the neighbours get the good version.</p>
+        </div>
+      </div>
+      <div class="scene reveal">
+        <div class="scene-art a3"></div>
+        <div class="scene-body">
+          <h3>The rental you can't drill</h3>
+          <p>No holes, no brackets, no deposit conversation. It packs into a 7-inch cube and moves with you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 对比 ============================ -->
+<section class="compare">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Honest comparison</span>
+      <h2>What you give up, what you get.</h2>
+      <p>A projector is not a TV. Here is the trade in plain numbers, so you can decide before you buy.</p>
+    </div>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Spec</th>
+            <th class="us">LUMA Beam</th>
+            <th>65" OLED TV</th>
+            <th>Budget projector</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th>Picture size</th><td class="us">30–100"</td><td>65" fixed</td><td>40–80"</td></tr>
+          <tr><th>Native resolution</th><td class="us">1080p</td><td class="tick">4K</td><td>480p–720p</td></tr>
+          <tr><th>Weight</th><td class="us">1.1 lb</td><td>48 lb</td><td>2.6 lb</td></tr>
+          <tr><th>Setup time</th><td class="us">Under 5 seconds</td><td>An afternoon</td><td>2–5 minutes</td></tr>
+          <tr><th>Needs a dark room</th><td class="us">Dim is enough</td><td class="cross">No</td><td>Yes</td></tr>
+          <tr><th>Works on battery</th><td class="us tick">Yes, 3 h</td><td class="cross">No</td><td>Rarely</td></tr>
+          <tr><th>Moves with you</th><td class="us tick">Fits in a bag</td><td class="cross">Two people</td><td>Yes</td></tr>
+          <tr><th>Price</th><td class="us">$299</td><td>$1,400+</td><td>$120</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 评价 ============================ -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Reviews</span>
+      <h2>1,926 people, mostly surprised.</h2>
+    </div>
+
+    <div class="rev-top">
+      <div class="rev-score reveal">
+        <b class="tnum">4.8</b>
+        <div class="stars" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+        </div>
+        <small>Based on 1,926 verified purchases</small>
+      </div>
+
+      <div class="rev-bars reveal">
+        <div class="rev-bar"><span>5 ★</span><span class="track"><i class="fill" style="width:84%"></i></span><span class="tnum">84%</span></div>
+        <div class="rev-bar"><span>4 ★</span><span class="track"><i class="fill" style="width:11%"></i></span><span class="tnum">11%</span></div>
+        <div class="rev-bar"><span>3 ★</span><span class="track"><i class="fill" style="width:3%"></i></span><span class="tnum">3%</span></div>
+        <div class="rev-bar"><span>2 ★</span><span class="track"><i class="fill" style="width:1%"></i></span><span class="tnum">1%</span></div>
+        <div class="rev-bar"><span>1 ★</span><span class="track"><i class="fill" style="width:1%"></i></span><span class="tnum">1%</span></div>
+      </div>
+    </div>
+
+    <div class="rev-cards">
+      <article class="rev-card reveal">
+        <div class="stars" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+        </div>
+        <h4>Replaced a 55" in a studio apartment</h4>
+        <p>I was ready to return it if the fan was loud. It sits two feet from me and I forget it's on. The autofocus is the part that actually feels like magic — I moved it from the desk to the bed mid-episode and it just fixed itself.</p>
+        <div class="rev-meta">
+          <span class="verified"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Verified</span>
+          <span>·</span><span>Marcus T.</span><span>·</span><span>Cinema kit</span>
+        </div>
+      </article>
+
+      <article class="rev-card reveal">
+        <div class="stars" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+        </div>
+        <h4>Good in daylight, great at dusk</h4>
+        <p>Straight talk: at 2pm with the blinds open it looks washed out. Close them halfway and it's genuinely good. At night it's better than the cinema near my flat. The screen in the kit is worth it — a bare wall has too much texture.</p>
+        <div class="rev-meta">
+          <span class="verified"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Verified</span>
+          <span>·</span><span>Priya S.</span><span>·</span><span>Home kit</span>
+        </div>
+      </article>
+
+      <article class="rev-card reveal">
+        <div class="stars" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+        </div>
+        <h4>Took it camping, no generator</h4>
+        <p>Full charge played Return of the King with about 20 minutes left. The keystone handled a tilted tent wall better than I expected. Only wish the case had a pocket for the remote.</p>
+        <div class="rev-meta">
+          <span class="verified"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Verified</span>
+          <span>·</span><span>Dan R.</span><span>·</span><span>Home kit</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 保证 ============================ -->
+<section class="guarantee">
+  <div class="wrap g-grid">
+    <div class="reveal">
+      <span class="eyebrow">Risk reversal</span>
+      <h2>Live with it for 30 days.</h2>
+      <p>Put it on your wall, watch three films, decide. If the picture isn't what you hoped, we email you a prepaid label and refund the whole thing — screen and tripod included.</p>
+    </div>
+    <div class="g-list">
+      <div class="g-item reveal">
+        <div class="badge"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></div>
+        <div><b>30-day trial, free return</b><span>No restocking fee, no "original packaging" clause.</span></div>
+      </div>
+      <div class="g-item reveal">
+        <div class="badge"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3 7-7 9-4-2-7-4-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div><b>2-year warranty</b><span>Covers the light engine, lens motor and battery.</span></div>
+      </div>
+      <div class="g-item reveal">
+        <div class="badge"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div><b>Humans on support</b><span>Median first reply: 3 hours, in English and German.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Questions</span>
+      <h2>The things people ask first.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Do I need a dark room?<span class="sign" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Not a dark room — a dim one. At 500 ANSI lumens it's fully usable with the blinds half closed in the afternoon, and it looks best after sunset. If you need a bright-room picture at noon, a TV is still the right answer.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How big can the picture get?<span class="sign" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>30 to 100 inches diagonal, at a throw distance of 0.8 to 2.6 metres. Most people land around 70–80 inches, which is roughly a 1.5 m wide picture on a normal apartment wall.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Does the battery really last a film?<span class="sign" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Three hours at 60% brightness, which is the setting most people use indoors. At full brightness expect about 2 hours 20. It charges over USB-C at 65 W, so a laptop charger works.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Can I use it with a console or laptop?<span class="sign" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Yes — HDMI 2.1 with a 18 ms input lag in game mode. 1080p120 is supported for consoles. It is not a 4K projector, so a PS5 will run at 1080p; it looks sharp, just not native 4K.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What's in each kit?<span class="sign" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Solo is the projector, USB-C cable and remote. Cinema adds a 1/4-inch tripod and an 80-inch ambient-light-rejecting screen. Home adds the padded carry case on top of that.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Shipping, duties, returns?<span class="sign" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Orders leave the warehouse within 24 hours on business days. Express is 2–4 days to the US, UK and EU, and duties are prepaid at checkout — nothing to pay on delivery. Returns are free within 30 days.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 结尾 CTA ============================ -->
+<section class="final">
+  <div class="wrap">
+    <h2>Your wall is already<br>the <em>screen</em>.</h2>
+    <p>Everything else is a setup step. LUMA Beam removes all of them.</p>
+    <button class="cta" id="finalCta">
+      Get LUMA Beam — <span class="tnum" id="finalPrice">$339</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+    <div class="micro">
+      <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Free express shipping</span>
+      <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>30-day trial</span>
+      <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>2-year warranty</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============================ 页脚 ============================ -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-brand">
+        <a class="logo" href="#top"><span class="mark" aria-hidden="true"></span>LUMA</a>
+        <p>Small projectors for people who move often and own few walls.</p>
+        <p class="demo-note">Demo store. Product, prices, ratings and review text are placeholders for design review — replace with real data before going live (FTC and EU UCPD both treat invented reviews and fake urgency as deceptive advertising).</p>
+      </div>
+      <div class="f-col">
+        <h4>Product</h4>
+        <a href="#why">Why Beam</a>
+        <a href="#specs">Specs</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="f-col">
+        <h4>Support</h4>
+        <a href="mailto:hello@example.com">Contact</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">Warranty</a>
+      </div>
+      <div class="f-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 LUMA. All rights reserved.</span>
+      <span>Visa · Mastercard · Amex · Apple Pay · PayPal</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ 吸底栏 ============================ -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="wrap">
+    <div class="sb-info">
+      <b>LUMA Beam — <span id="sbBundle">Cinema</span></b>
+      <span id="sbPrice">$339 · free express shipping</span>
+    </div>
+    <button class="cta" id="stickyCta">Add to cart</button>
+  </div>
+</div>
+
+<!-- ============================ 抽屉 ============================ -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Cart" aria-hidden="true">
+  <div class="drawer-head">
+    <h3>Your cart</h3>
+    <button class="drawer-close" id="drawerClose" aria-label="Close cart">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="drawer-body" id="drawerBody">
+    <div class="empty" id="emptyCart">Your cart is empty.<br>Pick a kit to get started.</div>
+    <div id="lineItems"></div>
+    <div class="ship-progress" id="shipBox" hidden>
+      <p id="shipText">Free express shipping included</p>
+      <div class="track"><i class="fill" id="shipFill" style="width:100%"></i></div>
+    </div>
+  </div>
+  <div class="drawer-foot">
+    <div class="subtotal"><span>Subtotal</span><b class="tnum" id="subtotal">$0</b></div>
+    <button class="cta" id="checkout">Checkout</button>
+    <p class="pay-note">Taxes and duties calculated at checkout</p>
+  </div>
+</aside>
+
+<div class="toast" id="toast">
+  <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+  <span id="toastText">Added to cart</span>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ======================================================================
+     1. 商品数据 —— 换成自己的商品只改这里
+     ====================================================================== */
+  const BUNDLES = {
+    solo:   { name:"Solo",   price:299, was:399, desc:"LUMA Beam projector" },
+    cinema: { name:"Cinema", price:339, was:417, desc:"Beam + tripod + 80-inch screen" },
+    home:   { name:"Home",   price:359, was:446, desc:"Beam + tripod + screen + carry case" }
+  };
+
+  const COLORS = {
+    obsidian: { name:"Obsidian", top:"#3A4249", mid:"#1B2024", bot:"#0C0F11" },
+    chalk:    { name:"Chalk",    top:"#F2EFE8", mid:"#D5D0C6", bot:"#A9A398" }
+  };
+
+  const CHECKOUT_URLS = { solo:"", cinema:"", home:"" };
+  // 每个套装填一个 Stripe Payment Link（或 Shopify 商品链接）即可真实收款。
+  // 静态页没法自己算价，所以只支持「单行购物车」直接跳转；
+  // 需要多件合并结算时，得用 Worker + Stripe API 或 Shopify Buy Button。
+
+  /* ======================================================================
+     2. 状态
+     ====================================================================== */
+  const state = { bundle:"cinema", color:"obsidian", cart:[] };
+
+  const $  = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+  const money = n => "$" + n.toLocaleString("en-US");
+
+  /* ======================================================================
+     3. 价格与套装联动
+     ====================================================================== */
+  function renderOffer(){
+    const b = BUNDLES[state.bundle];
+    const save = b.was - b.price;
+
+    $("#price").textContent    = money(b.price);
+    $("#priceWas").textContent = money(b.was);
+    $("#saveChip").textContent = "Save " + money(save);
+    $("#ctaPrice").textContent = money(b.price);
+    $("#finalPrice").textContent = money(b.price);
+    $("#sbBundle").textContent = b.name;
+    $("#sbPrice").textContent  = money(b.price) + " · free express shipping";
+
+    // 顶部套装卡片的选中态
+    $$(".bundle").forEach(el => {
+      el.setAttribute("aria-pressed", String(el.dataset.bundle === state.bundle));
+    });
+  }
+
+  function renderColor(){
+    const c = COLORS[state.color];
+    $("#colorName").textContent = c.name;
+    const pj = $("#projector");
+    pj.style.setProperty("--pj-top", c.top);
+    pj.style.setProperty("--pj-mid", c.mid);
+    pj.style.setProperty("--pj-bot", c.bot);
+    $$(".swatch").forEach(el => {
+      el.setAttribute("aria-pressed", String(el.dataset.color === state.color));
+    });
+  }
+
+  /* ======================================================================
+     4. 购物车
+     ====================================================================== */
+  function keyOf(item){ return item.bundle + "|" + item.color; }
+
+  function addItem(){
+    const it = { bundle:state.bundle, color:state.color, qty:1 };
+    const k = keyOf(it);
+    const hit = state.cart.find(c => keyOf(c) === k);
+    if (hit) hit.qty += 1; else state.cart.push(it);
+    renderCart();
+    openCart();
+    toast("Added to cart");
+  }
+
+  function renderCart(){
+    const totalQty = state.cart.reduce((n,i) => n + i.qty, 0);
+    const subtotal = state.cart.reduce((n,i) => n + BUNDLES[i.bundle].price * i.qty, 0);
+
+    $("#cartCount").textContent = totalQty;
+    $("#subtotal").textContent  = money(subtotal);
+
+    const wrap = $("#lineItems");
+    wrap.innerHTML = "";
+
+    if (!state.cart.length){
+      $("#emptyCart").style.display = "";
+      $("#shipBox").hidden = true;
+      return;
+    }
+    $("#emptyCart").style.display = "none";
+    $("#shipBox").hidden = false;
+
+    state.cart.forEach((item, idx) => {
+      const b = BUNDLES[item.bundle];
+      const c = COLORS[item.color];
+      const row = document.createElement("div");
+      row.className = "line-item";
+      row.innerHTML =
+        '<div class="li-thumb"><i></i></div>' +
+        '<div>' +
+          '<div class="li-name">' + b.name + ' kit</div>' +
+          '<div class="li-sub">' + c.name + ' · ' + b.desc + '</div>' +
+          '<div class="li-qty">' +
+            '<button data-act="dec" data-i="' + idx + '" aria-label="Decrease quantity">−</button>' +
+            '<span>' + item.qty + '</span>' +
+            '<button data-act="inc" data-i="' + idx + '" aria-label="Increase quantity">+</button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="li-price tnum">' + money(b.price * item.qty) + '</div>';
+      wrap.appendChild(row);
+    });
+
+    $("#shipText").textContent = "Free express shipping included";
+    $("#shipFill").style.width = "100%";
+  }
+
+  /* ======================================================================
+     5. 抽屉
+     ====================================================================== */
+  const drawer = $("#drawer");
+  const scrim  = $("#scrim");
+
+  function openCart(){
+    drawer.classList.add("show");
+    scrim.classList.add("show");
+    drawer.setAttribute("aria-hidden","false");
+    document.body.style.overflow = "hidden";
+  }
+  function closeCart(){
+    drawer.classList.remove("show");
+    scrim.classList.remove("show");
+    drawer.setAttribute("aria-hidden","true");
+    document.body.style.overflow = "";
+  }
+
+  /* ======================================================================
+     6. Toast
+     ====================================================================== */
+  let toastTimer;
+  function toast(msg){
+    $("#toastText").textContent = msg;
+    const t = $("#toast");
+    t.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove("show"), 2000);
+  }
+
+  /* ======================================================================
+     7. 事件绑定
+     ====================================================================== */
+  $$(".bundle").forEach(el => {
+    el.addEventListener("click", () => {
+      state.bundle = el.dataset.bundle;
+      renderOffer();
+    });
+  });
+
+  $$(".swatch").forEach(el => {
+    el.addEventListener("click", () => {
+      state.color = el.dataset.color;
+      renderColor();
+    });
+  });
+
+  $("#addToCart").addEventListener("click", addItem);
+  $("#stickyCta").addEventListener("click", addItem);
+  $("#finalCta").addEventListener("click", addItem);
+
+  $("#cartBtn").addEventListener("click", openCart);
+  $("#drawerClose").addEventListener("click", closeCart);
+  scrim.addEventListener("click", closeCart);
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeCart();
+  });
+
+  // 抽屉里的加减
+  $("#lineItems").addEventListener("click", e => {
+    const btn = e.target.closest("button[data-act]");
+    if (!btn) return;
+    const i = Number(btn.dataset.i);
+    const item = state.cart[i];
+    if (!item) return;
+    if (btn.dataset.act === "inc") item.qty += 1;
+    else {
+      item.qty -= 1;
+      if (item.qty <= 0) state.cart.splice(i, 1);
+    }
+    renderCart();
+  });
+
+  $("#checkout").addEventListener("click", () => {
+    if (!state.cart.length){ toast("Your cart is empty"); return; }
+
+    const url = CHECKOUT_URLS[state.cart[0].bundle];
+    if (state.cart.length === 1 && url){
+      window.location.href = url;
+    } else if (state.cart.length > 1){
+      toast("Multi-item checkout needs a Worker — see README");
+    } else {
+      toast("Connect Stripe or Shopify here");
+    }
+  });
+
+  // FAQ
+  $$(".faq-q").forEach(q => {
+    q.addEventListener("click", () => {
+      const item = q.parentElement;
+      const ans  = item.querySelector(".faq-a");
+      const open = item.classList.contains("open");
+
+      $$(".faq-item").forEach(other => {
+        other.classList.remove("open");
+        other.querySelector(".faq-a").style.maxHeight = null;
+        other.querySelector(".faq-q").setAttribute("aria-expanded","false");
+      });
+
+      if (!open){
+        item.classList.add("open");
+        ans.style.maxHeight = ans.scrollHeight + "px";
+        q.setAttribute("aria-expanded","true");
+      }
+    });
+  });
+
+  // 移动端菜单：直接滚动到锚点区块，不做复杂汉堡面板
+  $("#burger").addEventListener("click", () => {
+    document.getElementById("why").scrollIntoView({behavior:"smooth"});
+  });
+
+  /* ======================================================================
+     8. 导航与吸底栏
+     ====================================================================== */
+  const nav = $("#nav");
+  const stickyBar = $("#stickyBar");
+  const hero = $(".hero");
+
+  function onScroll(){
+    const y = window.scrollY;
+    nav.classList.toggle("scrolled", y > 8);
+
+    const heroBottom = hero.offsetTop + hero.offsetHeight;
+    stickyBar.classList.toggle("show", y > heroBottom - 120);
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+
+  /* ======================================================================
+     9. 倒计时（示例：固定结束时间，上线请换成真实活动截止时间）
+     ====================================================================== */
+  const PROMO_ENDS = new Date("2026-10-25T23:59:59Z").getTime();
+
+  function tick(){
+    const diff = PROMO_ENDS - Date.now();
+    if (diff <= 0){
+      const t = $("#timer");
+      const bar = t && t.closest(".promo");
+      if (bar) bar.style.display = "none";
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor(diff / 3600000) % 24;
+    const m = Math.floor(diff / 60000) % 60;
+    const s = Math.floor(diff / 1000) % 60;
+    const pad = n => String(n).padStart(2,"0");
+    const set = (k,v) => { const el = document.querySelector('[data-t="'+k+'"]'); if (el) el.textContent = pad(v); };
+    set("d", d); set("h", h); set("m", m); set("s", s);
+  }
+  if ($("#timer")){ tick(); setInterval(tick, 1000); }
+
+  /* ======================================================================
+     10. 滚动进场
+     ====================================================================== */
+  if ("IntersectionObserver" in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting){
+          en.target.classList.add("in");
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold:0.12, rootMargin:"0px 0px -40px 0px" });
+
+    $$(".reveal").forEach((el, i) => {
+      el.style.transitionDelay = (Math.min(i % 4, 3) * 70) + "ms";
+      io.observe(el);
+    });
+  } else {
+    $$(".reveal").forEach(el => el.classList.add("in"));
+  }
+
+  /* ======================================================================
+     11. 初始化
+     ====================================================================== */
+  renderOffer();
+  renderColor();
+  renderCart();
+
+})();
+</script>
+</body>
+</html>

